@@ -35,8 +35,8 @@ class App extends Component{
                                 <thead>
                                 <tr>
                                     <th>ISBN</th>
-                                    <th>Title</th>
-                                    <th>Author</th>
+                                    <th>Название</th>
+                                    <th>Автор</th>
                                 </tr>
                                 </thead>
                                 <tbody>
