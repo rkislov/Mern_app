@@ -12,11 +12,20 @@ class App extends Component{
         }
     }
     componentDidMount() {
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
         axios.get('/api/book')
             .then(res => {
                 this.setState({books: res.data})
                 console.log(this.state.books)
             })
+            .catch(error => {
+                this.props.history.push('/login')
+            })
+    }
+
+    logout= () => {
+        localStorage.removeItem('jwtToken')
+        window.location.reload()
     }
     render(){
         return (
@@ -24,7 +33,10 @@ class App extends Component{
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            Каталог
+                            Каталог &nbsp;
+                            {localStorage.getItem('jwtToken') &&
+                            <button class="btn btn-outline-primary" onClick={this.logout}>Выход</button>
+                            }
                         </h3>
                     </div>
                     <div class="panel-body">

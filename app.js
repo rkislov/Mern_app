@@ -4,6 +4,7 @@ const favicon = require('serve-favicon')
 const logger = require('morgan')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const auth = require('./routes/auth')
 mongoose.Promise = require('bluebird')
 mongoose.connect('mongodb://localhost/mern', { promiseLibrary: require('bluebird')})
     .then(()=> console.log('Соединение с БД установленно'))
@@ -16,6 +17,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({'extended':'false'}))
 app.use(express.static(path.join(__dirname, 'build')))
 
+app.use('/api/auth', auth)
 app.use('/api/book', book)
 
 app.use((req,res,next)=> {

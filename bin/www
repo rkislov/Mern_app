@@ -65,7 +65,7 @@ function onError(error) {
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(bind + ' Вам не хватает привилегий);
+      console.error(bind + ' Вам не хватает привилегий');
       process.exit(1);
       break;
     case 'EADDRINUSE':
