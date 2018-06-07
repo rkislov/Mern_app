@@ -11,7 +11,7 @@ class Create extends Component {
             title: '',
             author: '',
             description: '',
-            published_year: '',
+            published_date: '',
             publisher: ''
         }
     }
@@ -24,15 +24,15 @@ class Create extends Component {
     onSubmit = (e) => {
         e.preventDefault()
 
-        const {isbn, title, author, description, published_year, publisher} = this.state
+        const {isbn, title, author, description, published_date, publisher} = this.state
 
-        axios.post('/api/book', {isbn, title, author, description, published_year, publisher})
+        axios.post('/api/book', {isbn, title, author, description, published_date, publisher})
             .then(res => {
                 this.props.history.push('/')
             })
     }
     render() {
-        const {isbn, title, author, description, published_year, publisher} = this.state
+        const {isbn, title, author, description, published_date, publisher} = this.state
         return (
         <div className="container">
             <div className="card">
@@ -92,8 +92,8 @@ class Create extends Component {
                             <input
                                 type="text"
                                 className="form-control"
-                                name="published_year"
-                                value={published_year}
+                                name="published_date"
+                                value={published_date}
                                 onChange={this.onChange}
                                 placeholder="2018"/>
                         </div>
